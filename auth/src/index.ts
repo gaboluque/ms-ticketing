@@ -8,11 +8,20 @@ import { signupRouter } from "./routes/signup";
 import { signoutRouter } from "./routes/signout";
 import { errorHandler } from "./middlewares/errorHandler";
 import { NotFoundError } from "./errors/notFoundError";
+import cookieSession from "cookie-session";
 
 const app = express();
+
+// Trust traffic through proxy
+app.set('trust proxy', true);
 app.use(json());
 
-// Create middleware to show incoming requests
+app.use(cookieSession({
+  signed: false,
+  secure: true,
+}))
+
+// Middleware to show incoming requests
 app.use((req, res, next) => {
   console.log(`${req.method} - ${req.url}`);
   next();
