@@ -41,6 +41,15 @@ userSchema.pre('save', async function (done) {
   done();
 });
 
+userSchema.set("toJSON", {
+  transform: (doc, ret, options) => {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.password;
+    delete ret.__v;
+  }
+});
+
 userSchema.statics.build = (attrs: UserAttrs) => new User(attrs);
 
 export const User = mongoose.model<UserDoc, UserModel>("User", userSchema);
