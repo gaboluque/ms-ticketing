@@ -3,12 +3,13 @@ import 'express-async-errors';
 import { json } from "body-parser";
 import mongoose from "mongoose";
 import { currentUserRouter } from "./routes/currentUser";
-import { signinRouter } from "./routes/signin";
+import { signInRouter } from "./routes/signin";
 import { signupRouter } from "./routes/signup";
 import { signoutRouter } from "./routes/signout";
 import { errorHandler } from "./middlewares/errorHandler";
 import { NotFoundError } from "./errors/notFoundError";
 import cookieSession from "cookie-session";
+import { DatabaseConnectionError } from "./errors/databaseConnectionError";
 
 const app = express();
 
@@ -29,7 +30,7 @@ app.use((req, res, next) => {
 
 app.use(signupRouter);
 app.use(currentUserRouter);
-app.use(signinRouter);
+app.use(signInRouter);
 app.use(signoutRouter);
 
 app.get("*", () => { throw new NotFoundError() });
@@ -37,15 +38,13 @@ app.get("*", () => { throw new NotFoundError() });
 app.use(errorHandler);
 
 const start = async () => {
-  if(!process.env.JWT_KEY) {
-    throw new Error('JWT_KEY must be defined');
-  }
+  if(!process.env.JWT_KEY) throw new Error('JWT_KEY must be defined');
 
   try {
     await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
     console.log("Connected to MongoDB");
   } catch (err) {
-    console.error(err);
+    throw new DatabaseConnectionError();
   }
 
   app.listen(3000, () => {
