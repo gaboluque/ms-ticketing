@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from "jsonwebtoken";
-import { JWT_KEY } from "../../config";
+import { JWT_KEY } from "../config";
 
 interface UserPayload {
   id: string;

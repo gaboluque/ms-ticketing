@@ -5,7 +5,7 @@ import { User } from "../models/user";
 import { BadRequestError } from "../errors/badRequestError";
 import { Password } from "../services/password";
 import jwt from "jsonwebtoken";
-import { JWT_KEY } from "../../config";
+import { JWT_KEY } from "../config";
 
 const router = express.Router();
 
