@@ -18,14 +18,16 @@ app.use(json());
 
 app.use(cookieSession({
   signed: false,
-  secure: true,
-}))
+  secure: process.env.NODE_ENV !== 'test',
+}));
 
 // Middleware to show incoming requests
-app.use((req, res, next) => {
-  console.log(`${req.method} - ${req.url}`);
-  next();
-});
+if(process.env.NODE_ENV === "development") {
+  app.use((req, res, next) => {
+    console.log(`${req.method} - ${req.url}`);
+    next();
+  });
+}
 
 app.use(signupRouter);
 app.use(currentUserRouter);

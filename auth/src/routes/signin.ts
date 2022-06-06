@@ -5,7 +5,6 @@ import { User } from "../models/user";
 import { BadRequestError } from "../errors/badRequestError";
 import { Password } from "../services/password";
 import jwt from "jsonwebtoken";
-import { JWT_KEY } from "../config";
 
 const router = express.Router();
 
@@ -18,6 +17,7 @@ router.post(
   validateRequest,
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
+    console.log(email, password);
 
     const existingUser = await User.findOne({ email });
     if (!existingUser) throw new BadRequestError('Invalid credentials');
@@ -27,7 +27,7 @@ router.post(
 
 
     // Generate JWT
-    const userJwt = jwt.sign({ id: existingUser.id, email: existingUser.email }, JWT_KEY);
+    const userJwt = jwt.sign({ id: existingUser.id, email: existingUser.email }, process.env.JWT_KEY!);
 
     // Store it on session object
     req.session = { jwt: userJwt };
