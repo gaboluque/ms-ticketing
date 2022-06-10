@@ -8,12 +8,20 @@ build:
   local:
     push: false
   artifacts:
-    - image: gluque/ticketing/auth
+    - image: gaboluque/ticketing-auth
       context: auth
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
+            dest: .
+    - image: gaboluque/ticketing-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
             dest: .
   

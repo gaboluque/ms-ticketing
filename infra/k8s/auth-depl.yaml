@@ -14,7 +14,7 @@ spec:
     spec: 
       containers:
         - name: auth
-          image: gluque/ticketing/auth
+          image: gaboluque/ticketing-auth
           env:
             - name: JWT_KEY
               valueFrom:
