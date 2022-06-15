@@ -1,27 +1,17 @@
-import axios from "axios";
+import { ticketingService } from "../services/ticketing";
 
-
-const Home = () => {
+const Home = ({ currentUser }) => {
   return (
     <div>
-      HELLO
+      {currentUser ? "You are logged in" : "You are not logged in"}
     </div>
   );
 };
 
 export async function getServerSideProps(context) {
-  console.log(context.req.cookies);
+  const { data } = await ticketingService(context).get("/api/users/current-user");
 
-  const response = await axios.get("/api/users/current-user")
-    .catch(err => {
-      console.log(err);
-    });
-
-  console.log(response);
-
-  return {
-    props: {}, // will be passed to the page component as props
-  }
+  return { props: data };
 }
 
 Home.defaultProps = {};
