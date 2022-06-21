@@ -1,7 +1,6 @@
 # MS-ticketing
 
-Microservices ticketing project following
-![Udemy Microservices course](https://www.udemy.com/course/microservices-with-node-js-and-react/)
+Microservices ticketing project following [Udemy Microservices course](https://www.udemy.com/course/microservices-with-node-js-and-react/)
 
 - Architect large, scalable apps using a collection of microservices
 - Deploy a multi-service app to the cloud with Docker and Kubernetes
