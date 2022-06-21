@@ -1,11 +1,7 @@
 import express from "express";
 import 'express-async-errors';
 import { json } from "body-parser";
-import { currentUserRouter } from "./routes/currentUser";
-import { signInRouter } from "./routes/signin";
 import { errorHandler, NotFoundError } from "@gabo-test/common";
-import { signupRouter } from "./routes/signup";
-import { signOutRouter } from "./routes/signout";
 import cookieSession from "cookie-session";
 
 const app = express();
@@ -26,11 +22,6 @@ if(process.env.NODE_ENV === "development") {
     next();
   });
 }
-
-app.use(signupRouter);
-app.use(currentUserRouter);
-app.use(signInRouter);
-app.use(signOutRouter);
 
 app.get("*", () => { throw new NotFoundError() });
 
