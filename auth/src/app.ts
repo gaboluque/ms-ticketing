@@ -4,10 +4,9 @@ import 'express-async-errors';
 import { json } from "body-parser";
 import { currentUserRouter } from "./routes/currentUser";
 import { signInRouter } from "./routes/signin";
+import { errorHandler, NotFoundError } from "@gabo-test/common";
 import { signupRouter } from "./routes/signup";
 import { signOutRouter } from "./routes/signout";
-import { errorHandler } from "./middlewares/errorHandler";
-import { NotFoundError } from "./errors/notFoundError";
 import cookieSession from "cookie-session";
 
 const app = express();

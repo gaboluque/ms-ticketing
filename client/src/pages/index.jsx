@@ -1,5 +1,3 @@
-import { ticketingService } from "../services/ticketing";
-
 const Home = ({ currentUser }) => {
   return (
     <div>
@@ -7,12 +5,6 @@ const Home = ({ currentUser }) => {
     </div>
   );
 };
-
-export async function getServerSideProps(context) {
-  const { data } = await ticketingService(context).get("/api/users/current-user");
-
-  return { props: data };
-}
 
 Home.defaultProps = {};
 

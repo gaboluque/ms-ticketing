@@ -291,6 +291,19 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@gabo-test/common@^1.0.12":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@gabo-test/common/-/common-1.0.16.tgz#67f566065285603e0d57d173a4742f346abbfbbc"
+  integrity sha512-nz3UyrniFiZ53O9BEMO+csnL6iddPRAAos0YgGY+gg+ciSsOMjFyDt6UUc5fR56uz61vb5CgMSj1OhdWE4UQDw==
+  dependencies:
+    "@types/cookie-session" "^2.0.44"
+    "@types/express" "^4.17.13"
+    "@types/jsonwebtoken" "^8.5.8"
+    cookie-session "^2.0.0"
+    express "^4.18.1"
+    express-validator "^6.14.2"
+    jsonwebtoken "^8.5.1"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1488,6 +1501,14 @@ express-validator@^6.14.1:
   version "6.14.1"
   resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.14.1.tgz#7479e8f93c61fb6e0c3562bb9548267386278acb"
   integrity sha512-4w7gn/jPW1a+r833xBqpu4pL7XiiScDwlbBIMtiqUEt/MVNqR94HOHyKLcCtnqCnEPiqrX1Mqt9l/SVN/iqeLA==
+  dependencies:
+    lodash "^4.17.21"
+    validator "^13.7.0"
+
+express-validator@^6.14.2:
+  version "6.14.2"
+  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.14.2.tgz#6147893f7bec0e14162c3a88b3653121afc4678f"
+  integrity sha512-8XfAUrQ6Y7dIIuy9KcUPCfG/uCbvREctrxf5EeeME+ulanJ4iiW71lWmm9r4YcKKYOCBMan0WpVg7FtHu4Z4Wg==
   dependencies:
     lodash "^4.17.21"
     validator "^13.7.0"

@@ -10,9 +10,12 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
-    "setupFilesAfterEnv": ["./src/test/setup.ts"]
+    "setupFilesAfterEnv": [
+      "./src/test/setup.ts"
+    ]
   },
   "dependencies": {
+    "@gabo-test/common": "^1.0.12",
     "@types/cookie-session": "^2.0.44",
     "@types/express": "^4.17.13",
     "@types/jest": "^28.1.0",
