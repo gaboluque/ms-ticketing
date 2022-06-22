@@ -1,8 +1,9 @@
 import express from "express";
 import 'express-async-errors';
 import { json } from "body-parser";
-import { errorHandler, NotFoundError } from "@gabo-test/common";
+import { currentUser, errorHandler, NotFoundError } from "@gabo-test/common";
 import cookieSession from "cookie-session";
+import { newTicketRouter } from "./routes/new";
 
 const app = express();
 
@@ -15,6 +16,8 @@ app.use(cookieSession({
   secure: process.env.NODE_ENV !== 'test',
 }));
 
+app.use(currentUser);
+
 // Middleware to show incoming requests
 if(process.env.NODE_ENV === "development") {
   app.use((req, res, next) => {
@@ -22,6 +25,8 @@ if(process.env.NODE_ENV === "development") {
     next();
   });
 }
+
+app.use(newTicketRouter);
 
 app.get("*", () => { throw new NotFoundError() });
 
