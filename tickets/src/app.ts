@@ -1,9 +1,12 @@
 import express from "express";
 import 'express-async-errors';
 import { json } from "body-parser";
-import { currentUser, errorHandler, NotFoundError } from "@gabo-test/common";
+import { currentUser, errorHandler, NotFoundError } from "@gluque/node-utils";
 import cookieSession from "cookie-session";
 import { newTicketRouter } from "./routes/new";
+import { showTicketRouter } from "./routes/show";
+import { indexTicketsRouter } from "./routes";
+import { updateTicketRouter } from "./routes/update";
 
 const app = express();
 
@@ -19,7 +22,7 @@ app.use(cookieSession({
 app.use(currentUser);
 
 // Middleware to show incoming requests
-if(process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
   app.use((req, res, next) => {
     console.log(`${req.method} - ${req.url}`);
     next();
@@ -27,8 +30,14 @@ if(process.env.NODE_ENV === "development") {
 }
 
 app.use(newTicketRouter);
+app.use(showTicketRouter);
+app.use(indexTicketsRouter);
+app.use(updateTicketRouter);
 
-app.get("*", () => { throw new NotFoundError() });
+
+app.get("*", () => {
+  throw new NotFoundError()
+});
 
 app.use(errorHandler);
 

@@ -1,11 +1,11 @@
 import express, { Request, Response } from "express";
-import { requireAuth, validateRequest } from "@gluque/node-utils";
+import { NotFoundError, requireAuth, UnauthorizedError, validateRequest } from "@gluque/node-utils";
 import { body } from "express-validator";
 import { Ticket } from "../models/ticket";
 
 const router = express.Router();
 
-router.post("/api/tickets",
+router.put(`/api/tickets/:ticketId`,
   requireAuth,
   [
     body("title").not().isEmpty().withMessage("Title is required"),
@@ -13,15 +13,16 @@ router.post("/api/tickets",
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { title, price } = req.body;
+    const ticket = await Ticket.findById(req.params.ticketId);
+    if (!ticket) throw new NotFoundError();
+    if (ticket.userId !== req.currentUser!.id) throw new UnauthorizedError();
 
-    const ticket = Ticket.build({
-      title, price, userId: req.currentUser!.id
-    });
+    const { title, price } = req.body;
+    ticket.set({ title, price });
     await ticket.save();
 
-    res.status(201).send(ticket);
+    res.send(ticket);
   }
 );
 
-export { router as newTicketRouter };
+export { router as updateTicketRouter };

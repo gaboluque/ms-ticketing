@@ -1,4 +1,4 @@
-import { DatabaseConnectionError } from "@gabo-test/common";
+import { DatabaseConnectionError } from "@gluque/node-utils";
 import mongoose from "mongoose";
 import { app } from "./app";
 

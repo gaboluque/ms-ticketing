@@ -1,5 +1,5 @@
 import express from 'express';
-import { currentUser } from "@gabo-test/common";
+import { currentUser } from "@gluque/node-utils";
 
 const router = express.Router();
 

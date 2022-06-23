@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { User } from "../models/user";
-import { BadRequestError, validateRequest } from "@gabo-test/common";
+import { BadRequestError, validateRequest } from "@gluque/node-utils";
 import jwt from 'jsonwebtoken';
 
 const router = express.Router();
