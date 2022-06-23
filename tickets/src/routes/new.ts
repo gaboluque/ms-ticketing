@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { requireAuth, validateRequest } from "@gabo-test/common";
 import { body } from "express-validator";
+import { Ticket } from "../models/ticket";
 
 const router = express.Router();
 
@@ -12,7 +13,14 @@ router.post("/api/tickets",
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    res.sendStatus(201);
+    const { title, price } = req.body;
+
+    const ticket = Ticket.build({
+      title, price, userId: req.currentUser!.id
+    });
+    await ticket.save();
+
+    res.status(201).send(ticket);
   }
 );
 
