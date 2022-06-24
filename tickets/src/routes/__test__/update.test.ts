@@ -81,7 +81,7 @@ describe('PUT - /api/tickets/:ticketId', () => {
     const response = await request(app)
       .get(`/api/tickets/${newTicketResponse.body.id}`)
       .send({});
-    
+
     expect(response.body.title).toEqual("New new title");
     expect(response.body.price).toEqual(50);
   });
