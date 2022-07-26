@@ -2,6 +2,8 @@ import express, { Request, Response } from "express";
 import { NotFoundError, requireAuth, UnauthorizedError, validateRequest } from "@gluque/node-utils";
 import { body } from "express-validator";
 import { Ticket } from "../models/ticket";
+import { natsWrapper } from "../natsWrapper";
+import { TicketUpdatedPublisher } from "../events/publishers/ticketUpdatedPublisher";
 
 const router = express.Router();
 
@@ -20,6 +22,13 @@ router.put(`/api/tickets/:ticketId`,
     const { title, price } = req.body;
     ticket.set({ title, price });
     await ticket.save();
+
+    await new TicketUpdatedPublisher(natsWrapper.client!).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId
+    });
 
     res.send(ticket);
   }

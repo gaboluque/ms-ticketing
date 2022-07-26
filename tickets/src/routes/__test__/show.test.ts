@@ -19,7 +19,8 @@ describe('GET - /api/tickets/:ticketId', () => {
       .send({
         title: "New ticket",
         price: 20
-      });
+      })
+      .expect(201);
 
     const ticketResponse = await request(app)
       .get(`/api/tickets/${response.body.id}`)

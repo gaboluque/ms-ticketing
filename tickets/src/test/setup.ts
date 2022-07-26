@@ -17,6 +17,8 @@ beforeEach(async () => {
   for (let collection of collections) await collection.deleteMany({});
 });
 
+jest.mock("../natsWrapper");
+
 afterAll(async () => {
   await mongoose.connection.close();
   await mongo.stop();
