@@ -292,9 +292,9 @@
     "@jridgewell/trace-mapping" "0.3.9"
 
 "@gluque/node-utils@^1.0.12":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@gluque/node-utils/-/node-utils-1.0.25.tgz#2f0914d456b6456fc2d9ef0608c41522f208bf2e"
-  integrity sha512-RJNv/RDN4Cpmq+uLcaQlIiZD97j8UtzBKSTOywMYe4DKpijRuaNUBrPuyobZvhLRYmaMwqy5w/sb804tBctsNg==
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@gluque/node-utils/-/node-utils-1.0.26.tgz#efc191808c4eee545386700cb01a824aeb50b8b6"
+  integrity sha512-NRYRC1200ihdjC8n4EKB//iNVxGdoTGfmXpXmacFarLvc4DPRYgvC2lZ0Tv75R4aq1mRB6vmvAHAl8K4bD313A==
   dependencies:
     "@types/cookie-session" "^2.0.44"
     "@types/express" "^4.17.13"
@@ -1707,9 +1707,9 @@ globals@^11.1.0:
   integrity sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==
 
 google-protobuf@^3.11.2:
-  version "3.20.1"
-  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.20.1.tgz#1b255c2b59bcda7c399df46c65206aa3c7a0ce8b"
-  integrity sha512-XMf1+O32FjYIV3CYu6Tuh5PNbfNEU5Xu22X+Xkdb/DUexFlCzhvv7d5Iirm4AOwn8lv4al1YvIhzGrg2j9Zfzw==
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.21.0.tgz#8dfa3fca16218618d373d414d3c1139e28034d6e"
+  integrity sha512-byR7MBTK4tZ5PZEb+u5ZTzpt4SfrTxv5682MjPlHN16XeqgZE2/8HOIWeiXe8JKnT9OVbtBGhbq8mtvkK8cd5g==
 
 graceful-fs@^4.2.9:
   version "4.2.10"
