@@ -292,9 +292,9 @@
     "@jridgewell/trace-mapping" "0.3.9"
 
 "@gluque/node-utils@^1.0.12":
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/@gluque/node-utils/-/node-utils-1.0.26.tgz#efc191808c4eee545386700cb01a824aeb50b8b6"
-  integrity sha512-NRYRC1200ihdjC8n4EKB//iNVxGdoTGfmXpXmacFarLvc4DPRYgvC2lZ0Tv75R4aq1mRB6vmvAHAl8K4bD313A==
+  version "1.0.27"
+  resolved "https://registry.yarnpkg.com/@gluque/node-utils/-/node-utils-1.0.27.tgz#9257e866684354d3faf78d1fb8c0879e3a8ae328"
+  integrity sha512-ddJ4l1Pfa+ymCIpIEdy3E7dGRJwMm9r6aebLgU2ENpJse1vUQogCKFWJINFULSFMG2AkW/h3J9hBHJLo0CTNgw==
   dependencies:
     "@types/cookie-session" "^2.0.44"
     "@types/express" "^4.17.13"
