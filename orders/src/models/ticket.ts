@@ -3,6 +3,7 @@ import { Order } from "./order";
 import { OrderStatus } from "@gluque/node-utils";
 
 interface TicketAttrs {
+  id: string;
   title: string;
   price: number;
 }
@@ -37,8 +38,8 @@ const ticketSchema = new mongoose.Schema({
   }
 });
 
-ticketSchema.statics.build = (attrs: TicketAttrs) => {
-  return new Ticket(attrs);
+ticketSchema.statics.build = ({ id, ...attrs }: TicketAttrs) => {
+  return new Ticket({ _id: id, ...attrs });
 }
 
 ticketSchema.methods.isReserved = async function () {
